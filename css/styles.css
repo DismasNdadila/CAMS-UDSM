@@ -138,3 +138,8 @@
 .get-attendance{
     align-items: center !important;
 }
+
+.card{
+  border-radius: 20px !important;
+  box-shadow: #000000 200px;
+}
