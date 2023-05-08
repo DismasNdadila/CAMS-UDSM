@@ -72,21 +72,50 @@ include("includes/db.php");
                $user_id = $_POST['id'];
                $user_password = $_POST['password'];
 
-               echo $con;
-
                //Check if user is a class teacher 
+                    $check_teacher = "SELECT * FROM classteacher WHERE classteacher_id='$user_id'";
+                    $run_teacher = mysqli_query($con,$check_teacher);
+                    $if_teacher = mysqli_num_rows($run_teacher);
+                    $row_teacher = mysqli_fetch_array($run_teacher);
+
+                    if($if_teacher < 1){
+                        echo " <div class='alert alert-danger'>
+                        Hauna Akaunti
+                       </div>";
+                    }
+
+                    $stored_id = $row_teacher["classteacher_id"];
+                   $stored_password = $row_teacher["password"];
+                
+                    if($user_password != $stored_password){
+
+                        echo "<div class='alert alert-danger'>
+                        Umekosea Neno Siri
+                    </div>";
+                        
+                    }
+
+                    if($if_teacher >= 1 AND $user_password == $stored_password){
+
+                        $_SESSION['classteacher'] = $stored_id;
+
+                 echo '
+                    <script> 
+                    window.open("classteacher/", "_self")
+                    </script>
+                    ';     
+                        
+                    }
+
+                   
 
             }
             
             
             ?>
-                <div class="alert alert-danger">
-                    Umekosea Neno Siri
-                </div>
+                
 
-                <div class="alert alert-danger">
-                    Hauna Akaunti
-                </div>
+               
 
                 <div class="card-body">
 
