@@ -19,7 +19,7 @@
                 <div class="card bg-c-blue order-card">
                     <div class="card-block">
                         <h6 class="m-b-20">Wanafunzi Jumla</h6>
-                        <h2 class="text-right"><i class="fa-solid fa-users"></i><span class="f-right">486</span></h2>
+                        <h2 class="text-right"><i class="fa-solid fa-users"></i><span class="f-right">5</span></h2>
 
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                 <div class="card bg-c-green order-card">
                     <div class="card-block">
                         <h6 class="m-b-20">Wanafunzi Wakiume</h6>
-                        <h2 class="text-right"><i class="fa-solid fa-child"></i><span class="f-right">246</span></h2>
+                        <h2 class="text-right"><i class="fa-solid fa-child"></i><span class="f-right">3</span></h2>
 
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                 <div class="card bg-c-yellow order-card">
                     <div class="card-block">
                         <h6 class="m-b-20">Wanafunzi Wakike</h6>
-                        <h2 class="text-right"><i class="fa-solid fa-child-dress"></i><span class="f-right">240</span>
+                        <h2 class="text-right"><i class="fa-solid fa-child-dress"></i><span class="f-right">2</span>
                         </h2>
 
                     </div>
