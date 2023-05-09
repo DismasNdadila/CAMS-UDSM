@@ -79,8 +79,8 @@ include("includes/db.php");
                     $row_teacher = mysqli_fetch_array($run_teacher);
 
                     if($if_teacher < 1){
-                        echo " <div class='alert alert-danger'>
-                        Hauna Akaunti^G Help        ^O Write Out   ^W Where Is    ^K Cut         ^T Execute     ^C Location    M-U Undo       M-A Set Mark
+                        echo "<div class='alert alert-danger'>
+                        Hauna Akaunti
                        </div>";
                     }
 
@@ -111,24 +111,20 @@ include("includes/db.php");
 
             }
             
-            
             ?>
-                
-
                
-
                 <div class="card-body">
 
                     <form action="" method="post" class="mt-3">
                         <div class="mb-3 mt-3">
                             <label for="email" class="form-label">Namba Ya Usajili:</label>
                             <input type="text" class="form-control" id="id" placeholder="Ingiza namba ya kitambulisho"
-                                name="id">
+                                name="id" required>
                         </div>
                         <div class="mb-3">
                             <label for="pwd" class="form-label">Neno Siri:</label>
                             <input type="password" class="form-control" id="pwd" placeholder="Ingiza neno la siri"
-                                name="password">
+                                name="password" required>
                         </div>
                         <div class="form-check mb-3">
                             <label class="form-check-label">
