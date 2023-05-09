@@ -183,3 +183,7 @@
 .f-right {
   float: right;
 }
+
+.date{
+  text-align: right !important;
+}

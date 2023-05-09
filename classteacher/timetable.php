@@ -1,6 +1,6 @@
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h5 class="h3"><i class="fa-solid fa-table"></i> Darasa la 4 A | Ratiba (Jumatatu)       </h5>
+        <h5 class="h3"><i class="fa-solid fa-table"></i> Darasa la 4 A | Ratiba      </h5> <h5 class="date"> 23/6/2023 </h5>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
                 <!--  <button type="button" class="btn btn-sm btn-outline-secondary">Extra</button>
@@ -20,7 +20,7 @@
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Somo</th>
-                    <th scope="col">Mda</th>
+                    <th scope="col">Muda</th>
                     
 
                 </tr>
