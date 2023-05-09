@@ -121,7 +121,7 @@ include("includes/db.php");
 
                     <form action="" method="post" class="mt-3">
                         <div class="mb-3 mt-3">
-                            <label for="email" class="form-label">Kitambulisho:</label>
+                            <label for="email" class="form-label">Namba Ya Usajili:</label>
                             <input type="text" class="form-control" id="id" placeholder="Ingiza namba ya kitambulisho"
                                 name="id">
                         </div>
