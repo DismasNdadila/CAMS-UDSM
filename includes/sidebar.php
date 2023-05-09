@@ -63,7 +63,7 @@ if (!isset($_GET['attendance']) AND !isset($_GET['timetable'])) {
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <span data-feather="file-text" class="align-text-bottom"></span>
-                            <i class="fa-solid fa-door"></i> Ondoka
+                            <i class="fa-solid fa-right-from-bracket"></i> Ondoka
                         </a>
                     </li>
 
