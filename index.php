@@ -80,7 +80,7 @@ include("includes/db.php");
 
                     if($if_teacher < 1){
                         echo " <div class='alert alert-danger'>
-                        Hauna Akaunti
+                        Hauna Akaunti^G Help        ^O Write Out   ^W Where Is    ^K Cut         ^T Execute     ^C Location    M-U Undo       M-A Set Mark
                        </div>";
                     }
 

@@ -41,7 +41,7 @@ if (!isset($_GET['attendance']) AND !isset($_GET['timetable'])) {
                     <li class="nav-item">
                         <a class="nav-link <?= $attendance_active ?>" href="../classteacher/?attendance">
                             <i class="fa-solid fa-person-circle-plus align-text-bottom"></i>
-                            Mauzulio
+                            Maudhurio
                         </a>
                     </li>
 
