@@ -60,7 +60,7 @@
     <!----- Class Cards End-->
 
     <br>
-    <h4>Wanafunzi</h4>
+    <h4>Majina Ya Wanafunzi</h4>
     <hr>
 
     <!--  <div class="alert alert-danger">
