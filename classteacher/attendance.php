@@ -12,9 +12,9 @@
 
     <!---Attendance Table begin-->
 
-    <div class="alert alert-danger">
+ <!--- <div class="alert alert-danger">
        Maudhurio Yameshakusanywa
-    </div>
+    </div> --->
 
 
     <div class="container table-responsive py-5">
