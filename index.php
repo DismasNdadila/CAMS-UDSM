@@ -1,6 +1,17 @@
-<?php 
+<?php
+session_start();
 
 include("includes/db.php");
+
+
+if (isset($_SESSION['classteacher'])) {
+
+    echo '
+    <script> 
+    window.open("classteacher", "_self")
+    </script>
+    ';
+}
 
 ?>
 
@@ -28,8 +39,7 @@ include("includes/db.php");
     <nav class="navbar navbar-dark bg-dark" aria-label="First navbar example">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">C A M S </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#cams-navbar"
-                aria-controls="cams-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#cams-navbar" aria-controls="cams-navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -65,66 +75,61 @@ include("includes/db.php");
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mt-3 form-div">
             <div class="mt-3 card">
 
-            <?php  
-            
-            if(isset($_POST['ingia'])){
+                <?php
 
-               $user_id = $_POST['id'];
-               $user_password = $_POST['password'];
+                if (isset($_POST['ingia'])) {
 
-               //Check if user is a class teacher 
+                    $user_id = $_POST['id'];
+                    $user_password = $_POST['password'];
+
+                    //Check if user is a class teacher 
                     $check_teacher = "SELECT * FROM classteacher WHERE classteacher_id='$user_id'";
-                    $run_teacher = mysqli_query($con,$check_teacher);
+                    $run_teacher = mysqli_query($con, $check_teacher);
                     $if_teacher = mysqli_num_rows($run_teacher);
                     $row_teacher = mysqli_fetch_array($run_teacher);
 
-                    if($if_teacher < 1){
+                    if ($if_teacher < 1) {
                         echo "<div class='alert alert-danger'>
                         Hauna Akaunti
                        </div>";
                     }
+              
 
-                    $stored_id = $row_teacher["classteacher_id"];
-                   $stored_password = $row_teacher["password"];
-                
-                    if($user_password != $stored_password){
+                        $stored_id = $row_teacher["classteacher_id"];
+                        $stored_password = $row_teacher["password"];
 
-                        echo "<div class='alert alert-danger'>
+                        if ($user_password != $stored_password AND $if_teacher > 1) {
+
+                            echo "<div class='alert alert-danger'>
                         Umekosea Neno Siri
                     </div>";
-                        
-                    }
+                        }
 
-                    if($if_teacher >= 1 AND $user_password == $stored_password){
+                        if ($if_teacher >= 1 && $user_password == $stored_password) {
 
-                        $_SESSION['classteacher'] = $stored_id;
+                            $_SESSION['classteacher'] = $stored_id;
 
-                 echo '
+                            echo '
                     <script> 
                     window.open("classteacher/", "_self")
                     </script>
-                    ';     
-                        
+                    ';
+                        }
                     }
+                
 
-                   
+                ?>
 
-            }
-            
-            ?>
-               
                 <div class="card-body">
 
                     <form action="" method="post" class="mt-3">
                         <div class="mb-3 mt-3">
                             <label for="email" class="form-label">Namba Ya Usajili:</label>
-                            <input type="text" class="form-control" id="id" placeholder="Ingiza namba ya kitambulisho"
-                                name="id" required>
+                            <input type="text" class="form-control" id="id" placeholder="Ingiza namba ya kitambulisho" name="id" required>
                         </div>
                         <div class="mb-3">
                             <label for="pwd" class="form-label">Neno Siri:</label>
-                            <input type="password" class="form-control" id="pwd" placeholder="Ingiza neno la siri"
-                                name="password" required>
+                            <input type="password" class="form-control" id="pwd" placeholder="Ingiza neno la siri" name="password" required>
                         </div>
                         <div class="form-check mb-3">
                             <label class="form-check-label">

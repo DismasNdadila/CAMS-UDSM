@@ -61,7 +61,7 @@ if (!isset($_GET['attendance']) AND !isset($_GET['timetable'])) {
                 </h6>
                 <ul class="nav flex-column mb-2">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="../logout.php">
                             <span data-feather="file-text" class="align-text-bottom"></span>
                             <i class="fa-solid fa-right-from-bracket"></i> Ondoka
                         </a>

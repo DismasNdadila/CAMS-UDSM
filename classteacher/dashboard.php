@@ -1,6 +1,26 @@
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div
         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+       
+        <?php 
+        
+        $classteacher_id = $_SESSION['classteacher'];
+
+        //Get Class Teacher Informaion
+        $get_classteacher = "SELECT * FROM classteacher WHERE classteacher_id='$classteacher_id'";
+        $run_classteacher = mysqli_query($con,$get_classteacher);
+        $row_classteacher = mysqli_fetch_array($run_classteacher);
+
+        $firstname = $row_classteacher['firstname'];
+        $middlename = $row_classteacher['middle_name'];
+        $lastname = $row_classteacher['lastname'];
+        $class_id =$row_classteacher['class_id'];
+
+        //Get Class Teacher Class
+        
+        
+        ?>
+       
         <h5 class="h3"><i class="fa-solid fa-chalkboard-user"></i> Darasa la 4 A</h5>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
