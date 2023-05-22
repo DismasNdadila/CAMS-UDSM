@@ -4,24 +4,39 @@
        
         <?php 
         
-        $classteacher_id = $_SESSION['classteacher'];
+        if(isset($_SESSION['classteacher'])){
+
+             $classteacher_id = $_SESSION['classteacher'];
 
         //Get Class Teacher Informaion
         $get_classteacher = "SELECT * FROM classteacher WHERE classteacher_id='$classteacher_id'";
         $run_classteacher = mysqli_query($con,$get_classteacher);
         $row_classteacher = mysqli_fetch_array($run_classteacher);
 
-        $firstname = $row_classteacher['firstname'];
+        $firstname = $row_classteacher['first_name'];
         $middlename = $row_classteacher['middle_name'];
-        $lastname = $row_classteacher['lastname'];
+        $lastname = $row_classteacher['last_name'];
         $class_id =$row_classteacher['class_id'];
 
-        //Get Class Teacher Class
-        
+
+        //Get Class of Teacher Class
+        $get_class = "SELECT * FROM classes WHERE class_id='$class_id'";
+        $run_class = mysqli_query($con,$get_class);
+        $row_class = mysqli_fetch_array($run_class);
+
+        $class_id = $row_class['class_id'];
+        $class_name = $row_class['name'];
+
+
+      
+         
+
+        }
+      
         
         ?>
        
-        <h5 class="h3"><i class="fa-solid fa-chalkboard-user"></i> Darasa la 4 A</h5>
+        <h5 class="h3"><i class="fa-solid fa-chalkboard-user"></i> <?= $class_name ?> </h5>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
                 <!--  <button type="button" class="btn btn-sm btn-outline-secondary">Extra</button>
@@ -101,41 +116,35 @@
                 </tr>
             </thead>
             <tbody>
+                <?php  
+                
+                  //Get students In class
+        $get_students = "SELECT * FROM students WHERE class_id='$class_id'";
+        $run_students = mysqli_query($con,$get_students);
+
+  while( $row_students = mysqli_fetch_array($run_students)){     
+
+        $students_id = $row_students['student_id'];
+        $s_firstname = $row_students['firstname'];
+        $s_secondname = $row_students['secondname'];
+        $s_lastname = $row_students['lastname'];
+        $s_gender = $row_students['gender'];
+        
+                
+                ?>
                 <tr>
-                    <td>Juma</td>
-                    <td>Mango</td>
-                    <td>Majani</td>
-                    <td>M</td>
+                    <td><?= $s_firstname ?></td>
+                    <td><?= $s_secondname ?></td>
+                    <td><?= $s_lastname ?></td>
+                    <td><?= $s_gender ?></td>
 
                 </tr>
-                <tr>
-                    <td>Henry </td>
-                    <td>Memebe</td>
-                    <td>Kitochi</td>
-                    <td>M</td>
-                </tr>
+             
+<?php 
 
-                <tr>
-                    <td>Lucia</td>
-                    <td>membe</td>
-                    <td>Masawe</td>
-                    <td>F</td>
-                </tr>
+  }
 
-                <tr>
-                    <td>Quick </td>
-                    <td>fast</td>
-                    <td>Sky</td>
-                    <td>M</td>
-                </tr>
-
-                <tr>
-                    <td>lucia </td>
-                    <td>mango</td>
-                    <td>Nembo</td>
-                    <td>F</td>
-                </tr>
-
+?>
             </tbody>
         </table>
     </div>
