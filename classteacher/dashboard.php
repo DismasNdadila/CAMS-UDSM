@@ -2,39 +2,7 @@
     <div
         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
        
-        <?php 
-        
-        if(isset($_SESSION['classteacher'])){
-
-             $classteacher_id = $_SESSION['classteacher'];
-
-        //Get Class Teacher Informaion
-        $get_classteacher = "SELECT * FROM classteacher WHERE classteacher_id='$classteacher_id'";
-        $run_classteacher = mysqli_query($con,$get_classteacher);
-        $row_classteacher = mysqli_fetch_array($run_classteacher);
-
-        $firstname = $row_classteacher['first_name'];
-        $middlename = $row_classteacher['middle_name'];
-        $lastname = $row_classteacher['last_name'];
-        $class_id =$row_classteacher['class_id'];
-
-
-        //Get Class of Teacher Class
-        $get_class = "SELECT * FROM classes WHERE class_id='$class_id'";
-        $run_class = mysqli_query($con,$get_class);
-        $row_class = mysqli_fetch_array($run_class);
-
-        $class_id = $row_class['class_id'];
-        $class_name = $row_class['name'];
-
-
-      
-         
-
-        }
-      
-        
-        ?>
+     
        
         <h5 class="h3"><i class="fa-solid fa-chalkboard-user"></i> <?= $class_name ?> </h5>
         <div class="btn-toolbar mb-2 mb-md-0">
@@ -54,7 +22,7 @@
                 <div class="card bg-c-blue order-card">
                     <div class="card-block">
                         <h6 class="m-b-20">Wanafunzi Jumla</h6>
-                        <h2 class="text-right"><i class="fa-solid fa-users"></i><span class="f-right">5</span></h2>
+                        <h2 class="text-right"><i class="fa-solid fa-users"></i><span class="f-right"><?= $total_students; ?></span></h2>
 
                     </div>
                 </div>
@@ -64,7 +32,7 @@
                 <div class="card bg-c-green order-card">
                     <div class="card-block">
                         <h6 class="m-b-20">Wanafunzi Wakiume</h6>
-                        <h2 class="text-right"><i class="fa-solid fa-child"></i><span class="f-right">3</span></h2>
+                        <h2 class="text-right"><i class="fa-solid fa-child"></i><span class="f-right"><?= $total_students_male; ?></span></h2>
 
                     </div>
                 </div>
@@ -74,7 +42,7 @@
                 <div class="card bg-c-yellow order-card">
                     <div class="card-block">
                         <h6 class="m-b-20">Wanafunzi Wakike</h6>
-                        <h2 class="text-right"><i class="fa-solid fa-child-dress"></i><span class="f-right">2</span>
+                        <h2 class="text-right"><i class="fa-solid fa-child-dress"></i><span class="f-right"><?= $total_female_students; ?></span>
                         </h2>
 
                     </div>
@@ -85,7 +53,7 @@
                 <div class="card bg-c-pink order-card">
                     <div class="card-block">
                         <h6 class="m-b-20">Masomo</h6>
-                        <h2 class="text-right"><i class="fa-solid fa-book-open"></i><span class="f-right">6</span></h2>
+                        <h2 class="text-right"><i class="fa-solid fa-book-open"></i><span class="f-right"><?= $total_class_subjects; ?></span></h2>
 
                     </div>
                 </div>
@@ -95,7 +63,7 @@
     <!----- Class Cards End-->
 
     <br>
-    <h4>Majina Ya Wanafunzi</h4>
+    <h4>Maudhurio Ya Wanafunzi</h4>
     <hr>
 
     <!--  <div class="alert alert-danger">
@@ -111,7 +79,7 @@
                     <th scope="col">Jina La Pili</th>
                     <th scope="col">Jina La Tatu</th>
                     <th scope="col">Jinsia</th>
-
+                    <th scope="col">Maudhurio</th>
 
                 </tr>
             </thead>
@@ -137,6 +105,7 @@
                     <td><?= $s_secondname ?></td>
                     <td><?= $s_lastname ?></td>
                     <td><?= $s_gender ?></td>
+                    <td class=" bg-primary text-center ">100%</td>
 
                 </tr>
              
