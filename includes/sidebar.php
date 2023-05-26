@@ -1,4 +1,5 @@
 <?php
+
 if (isset($_GET['attendance'])) {
     $attendance_active = "active";
 }
@@ -7,7 +8,11 @@ if(isset($_GET['timetable'])){
     $timetable_active = "active";
 }
 
-if (!isset($_GET['attendance']) AND !isset($_GET['timetable'])) {
+if(isset($_GET['addstudent'])){
+    $addstudent_active = "active";
+}
+
+if (!isset($_GET['attendance']) AND !isset($_GET['timetable']) AND !isset($_GET['addstudent'])) {
     $mwanzo_active = "active";
 }
 
@@ -49,6 +54,12 @@ if (!isset($_GET['attendance']) AND !isset($_GET['timetable'])) {
                         <a class="nav-link <?= $timetable_active ?>" href="../classteacher/?timetable">
                             <i class="fa-solid fa-table align-text-bottom"></i>
                             Ratiba
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?= $addstudent_active ?>" href="../classteacher/?addstudent">
+                            <i class="fa-solid fa-plus-circle align-text-bottom"></i>
+                            Ongeza Mwanafunzi
                         </a>
                     </li>
                 </ul>
