@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 include("includes/db.php");
@@ -39,7 +40,8 @@ if (isset($_SESSION['classteacher'])) {
     <nav class="navbar navbar-dark bg-dark" aria-label="First navbar example">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">C A M S </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#cams-navbar" aria-controls="cams-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#cams-navbar"
+                aria-controls="cams-navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -117,27 +119,151 @@ if (isset($_SESSION['classteacher'])) {
                         }
                     }
                 
+                    //Register New Teacher
+
+                    if(isset($_POST['register'])){
+
+                        $firstname_n = $_POST['firstname'];
+                        $secondname_n = $_POST['secondname'];
+                        $lastname_n = $_POST['lastname'];
+                        $class_n = $_POST['darasa'];
+                        $password_n = $_POST['password'];
+
+                        $insert = "INSERT INTO classteacher (first_name,middle_name,last_name,password,class_id) VALUES
+                        ('$firstname_n','$secondname_n','$lastname_n','$password_n','$class_n')";
+                        $run_n = mysqli_query($con,$insert);
+
+                        if($run_n){
+
+                         //Get classteacher id 
+                         $get_id = "SELECT * FROM classteacher WHERE first_name='$firstname_n' AND last_name='$lastname_n' AND password='$password_n'";
+                         $run = mysqli_query($con,$get_id);
+                         $row_id = mysqli_fetch_array($run);
+
+                         $classteacher_id = $row_id['classteacher_id'];
+
+                         $_SESSION['classteacher'] = $classteacher_id;
+
+                         echo '
+                         <script> 
+                         window.open("classteacher/", "_self")
+                         </script>
+                         ';
+
+                        }
+
+
+                    }
 
                 ?>
 
                 <div class="card-body">
-
+                            <!---login form---->
                     <form action="" method="post" class="mt-3">
                         <div class="mb-3 mt-3">
                             <label for="email" class="form-label">Namba Ya Usajili:</label>
-                            <input type="text" class="form-control" id="id" placeholder="Ingiza namba ya kitambulisho" name="id" required>
+                            <input type="text" class="form-control" id="id" placeholder="Ingiza namba ya kitambulisho"
+                                name="id" required>
                         </div>
                         <div class="mb-3">
                             <label for="pwd" class="form-label">Neno Siri:</label>
-                            <input type="password" class="form-control" id="pwd" placeholder="Ingiza neno la siri" name="password" required>
+                            <input type="password" class="form-control" id="pwd" placeholder="Ingiza neno la siri"
+                                name="password" required>
                         </div>
-                        <div class="form-check mb-3">
+                        <!---      <div class="form-check mb-3">
                             <label class="form-check-label">
                                 <input class="form-check-input" type="checkbox" name="remember"> Nikumbuke
                             </label>
+                        </div> ---->
+                        <div class="d-grid">
+                            <button type="submit" name="ingia" class="btn btn-success btn-block">
+                                <i class=" fa-solid fa-right-from-bracket"></i> Ingia </button>
+                            <!-- Button to Open the Modal -->
+                            <br>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#myModal">
+                                <i class="fa-solid fa-book"></i> Jisajili
+                            </button>
                         </div>
-                        <button type="submit" name="ingia" class="btn btn-success">Ingia</button>
+
                     </form>
+                </div>
+
+
+
+                <!-- The Modal -->
+                <div class="modal" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Fungua Akaunti</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+
+
+                            <div class="modal-body">
+
+
+                                <form action="" method="post" class="mt-3">
+                                    <div class="mb-3 mt-3">
+                                        <label class="form-label">Jina la kwanza</label>
+                                        <input type="text" class="form-control" id="id"
+                                            placeholder="Ingiza jina lako la kwanza" name="firstname" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label"> Jina la Pili </label>
+                                        <input type="text" class="form-control" placeholder="Ingiza jina lako la pili"
+                                            name="secondname" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label"> Jina la Mwisho </label>
+                                        <input type="text" class="form-control" placeholder="Ingiza jina lako la mwisho"
+                                            name="lastname" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label"> Darasa </label>
+                                        <select class="form-select" name="darasa">
+                                            <?php 
+                                            //Get classess
+                                            $classes = "SELECT * FROM classes";
+                                            $run = mysqli_query($con,$classes);
+
+                                            while($row = mysqli_fetch_array($run)){
+
+                                                $class_id = $row['class_id'];
+                                                $class_name = $row['name'];
+                                            
+                                            ?>
+                                            <option value="<?= $class_id ?>"> <?= $class_name ?> </option>
+                                            <?php 
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label"> Neno Siri </label>
+                                        <input type="password" class="form-control" placeholder="Ingiza neno siri"
+                                            name="password" required>
+                                    </div>
+                                    <div class="d-grid">
+
+                                        <button type="submit" name="register" class="btn btn-primary"
+                                         >
+                                            <i class="fa-solid fa-book"></i> Jisajili
+                                        </button>
+                                    </div>
+
+                                </form>
+
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
                 </div>
 
                 <div class="card-footer">

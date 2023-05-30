@@ -33,7 +33,7 @@ include("../includes/sidebar.php");
         $class_name = $row_class['name'];
 
             //Total Students
-        $get_students_totals = "SELECT COUNT(student_id) AS total_students FROM students";
+        $get_students_totals = "SELECT COUNT(student_id) AS total_students FROM students WHERE class_id='$class_id' AND classteacher_id='$classteacher_id'";
         $run_students_totals = mysqli_query($con,$get_students_totals);
         $row_students_totals = mysqli_fetch_array($run_students_totals);
 
@@ -41,7 +41,7 @@ include("../includes/sidebar.php");
 
 
       //Male Students
-      $get_male_students = "SELECT  COUNT(student_id) AS male_students FROM students WHERE gender='M'";
+      $get_male_students = "SELECT  COUNT(student_id) AS male_students FROM students WHERE gender='M' AND class_id='$class_id' AND classteacher_id='$classteacher_id'";
       $run_male_students = mysqli_query($con,$get_male_students);
       $row_male_students = mysqli_fetch_array($run_male_students);
 
@@ -49,14 +49,14 @@ include("../includes/sidebar.php");
 
 
       //Female Students 
-      $get_female_students = "SELECT COUNT(student_id) AS female_students FROM students WHERE gender='F'";
+      $get_female_students = "SELECT COUNT(student_id) AS female_students FROM students WHERE gender='F' AND class_id='$class_id' AND classteacher_id='$classteacher_id'";
       $run_female_students = mysqli_query($con,$get_female_students);
       $row_female_students = mysqli_fetch_array($run_female_students);
 
       $total_female_students = $row_female_students['female_students'];
 
          //Class Subjects
-         $get_class_subjects = "SELECT COUNT(subject_id) AS class_subjects FROM subjects WHERE class_id='$class_id'";
+         $get_class_subjects = "SELECT COUNT(subject_id) AS class_subjects FROM subjects WHERE class_id='$class_id' ";
          $run_class_subjects = mysqli_query($con,$get_class_subjects);
          $row_class_subjects = mysqli_fetch_array($run_class_subjects);
 
@@ -78,7 +78,7 @@ include("../includes/sidebar.php");
             ';   
         }
 
-        if (!isset($_GET['attendance']) and !isset($_GET['timetable'])) {
+        if (!isset($_GET['attendance']) and !isset($_GET['timetable']))  {
 
             include("../classteacher/dashboard.php");
         }
@@ -91,6 +91,7 @@ include("../includes/sidebar.php");
             include("../classteacher/timetable.php");
         }
 
+     
         ?>
 
 

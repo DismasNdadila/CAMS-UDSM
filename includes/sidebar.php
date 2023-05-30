@@ -27,7 +27,7 @@ if (!isset($_GET['attendance']) AND !isset($_GET['timetable']) AND !isset($_GET[
     <!--<input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">-->
     <div class="navbar-nav">
         <div class="nav-item text-nowrap">
-            <a class="nav-link px-3" href="#">SHULE YA MSINGI KIJITONYAMA</a>
+            <a class="nav-link px-3" href="#"></a>
         </div>
     </div>
 </header>
@@ -56,12 +56,7 @@ if (!isset($_GET['attendance']) AND !isset($_GET['timetable']) AND !isset($_GET[
                             Ratiba
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?= $addstudent_active ?>" href="../classteacher/?addstudent">
-                            <i class="fa-solid fa-plus-circle align-text-bottom"></i>
-                            Ongeza Mwanafunzi
-                        </a>
-                    </li>
+                  
                 </ul>
 
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
