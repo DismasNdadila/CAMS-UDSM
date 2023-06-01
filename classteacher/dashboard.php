@@ -232,7 +232,7 @@
                     <td><?= $s_secondname ?></td>
                     <td><?= $s_lastname ?></td>
                     <td><?= $s_gender ?></td>
-                    <td class=" <?= $color ?> text-center "><?= $percentage_attendance ?>%</td>
+                    <td class=" <?= $color ?> text-center asilimia "><?= $percentage_attendance ?>%</td>
                 </tr>
 
                 <?php 
