@@ -33,7 +33,8 @@ include("../includes/sidebar.php");
         $class_name = $row_class['name'];
 
             //Total Students
-        $get_students_totals = "SELECT COUNT(student_id) AS total_students FROM students WHERE class_id='$class_id' AND classteacher_id='$classteacher_id'";
+        $get_students_totals = "SELECT COUNT(student_id) AS total_students FROM students WHERE class_id='$class_id' 
+        AND classteacher_id='$classteacher_id'";
         $run_students_totals = mysqli_query($con,$get_students_totals);
         $row_students_totals = mysqli_fetch_array($run_students_totals);
 
@@ -41,7 +42,8 @@ include("../includes/sidebar.php");
 
 
       //Male Students
-      $get_male_students = "SELECT  COUNT(student_id) AS male_students FROM students WHERE gender='M' AND class_id='$class_id' AND classteacher_id='$classteacher_id'";
+      $get_male_students = "SELECT  COUNT(student_id) AS male_students FROM students WHERE gender='M' AND class_id='$class_id' 
+      AND classteacher_id='$classteacher_id'";
       $run_male_students = mysqli_query($con,$get_male_students);
       $row_male_students = mysqli_fetch_array($run_male_students);
 
@@ -49,7 +51,8 @@ include("../includes/sidebar.php");
 
 
       //Female Students 
-      $get_female_students = "SELECT COUNT(student_id) AS female_students FROM students WHERE gender='F' AND class_id='$class_id' AND classteacher_id='$classteacher_id'";
+      $get_female_students = "SELECT COUNT(student_id) AS female_students FROM students WHERE gender='F' AND class_id='$class_id'
+       AND classteacher_id='$classteacher_id'";
       $run_female_students = mysqli_query($con,$get_female_students);
       $row_female_students = mysqli_fetch_array($run_female_students);
 

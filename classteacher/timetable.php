@@ -1,3 +1,4 @@
+
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h5 class="h3"><i class="fa-solid fa-table"></i> Ratiba | <?= $class_name; ?>    </h5>
@@ -22,7 +23,8 @@ if(isset($_POST['add'])){
     $day_t = $_POST['siku'];
 
 
-            $add = "INSERT INTO timetable (day,subject_id,start_time,end_time,classteacher_id,class_id) VALUES
+            $add = "INSERT INTO timetable (day,subject_id,start_time,end_time,classteacher_id,class_id)
+             VALUES
             ('$day_t','$subject_t','$start_time_t','$end_time_t','$classteacher_id','$class_id')";
             $run_add = mysqli_query($con,$add);
 

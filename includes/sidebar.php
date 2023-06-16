@@ -36,6 +36,14 @@ if (!isset($_GET['attendance']) AND !isset($_GET['timetable']) AND !isset($_GET[
     <div class="row">
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-body-tertiary sidebar collapse">
             <div class="position-sticky pt-3 sidebar-sticky">
+                <?php  
+                //check if teacher 
+
+                if(isset(  $_SESSION['classteacher'])){
+
+             
+                
+                ?>
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link <?= $mwanzo_active ?>" aria-current="page" href="../classteacher/">
@@ -58,7 +66,10 @@ if (!isset($_GET['attendance']) AND !isset($_GET['timetable']) AND !isset($_GET[
                     </li>
                   
                 </ul>
+<?php  
+   }
 
+?>
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
                     <span>AKAUNTI</span>
                     <a class="link-secondary" href="#" aria-label="Add a new report">

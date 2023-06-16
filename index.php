@@ -14,6 +14,15 @@ if (isset($_SESSION['classteacher'])) {
     ';
 }
 
+if (isset($_SESSION['admin'])) {
+
+    echo '
+    <script> 
+    window.open("admin", "_self")
+    </script>
+    ';
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -84,6 +93,30 @@ if (isset($_SESSION['classteacher'])) {
                     $user_id = $_POST['id'];
                     $user_password = $_POST['password'];
 
+                    //check if user is admin
+                    $check_admin = "SELECT * FROM admin WHERE username='$user_id'";
+                    $run_admin  = mysqli_query($con,$check_admin);
+                    $row_admin = mysqli_fetch_array($run_admin);
+                    $if_admin = mysqli_num_rows($run_admin);
+
+                    $admin_password = $row_admin['password'];
+                    $admin_id = $row_admin['admin_id'];
+
+                    if($if_admin >= 1 AND $admin_password == $user_password){
+
+                        //ADMIN SESSION
+                        $_SESSION['admin'] = $admin_id;
+
+                        echo '
+                        <script> 
+                        window.open("admin/", "_self")
+                        </script>
+                        ';
+
+                    }
+
+                    if($if_admin < 1){
+
                     //Check if user is a class teacher 
                     $check_teacher = "SELECT * FROM classteacher WHERE classteacher_id='$user_id'";
                     $run_teacher = mysqli_query($con, $check_teacher);
@@ -95,20 +128,17 @@ if (isset($_SESSION['classteacher'])) {
                         Hauna Akaunti
                        </div>";
                     }
-              
-
                         $stored_id = $row_teacher["classteacher_id"];
                         $stored_password = $row_teacher["password"];
 
-                        if ($user_password != $stored_password AND $if_teacher > 1) {
+                        if ($user_password != $stored_password AND $if_teacher >= 1) {
 
                             echo "<div class='alert alert-danger'>
                         Umekosea Neno Siri
                     </div>";
                         }
-
                         if ($if_teacher >= 1 && $user_password == $stored_password) {
-
+                                //CLASSTEACHER SESSION
                             $_SESSION['classteacher'] = $stored_id;
 
                             echo '
@@ -119,6 +149,8 @@ if (isset($_SESSION['classteacher'])) {
                         }
                     }
                 
+                }
+
                     //Register New Teacher
 
                     if(isset($_POST['register'])){

@@ -36,7 +36,8 @@
                       $date = date("Y/m/d");
                 //Get Stduents For attendance
 
-                $get_students = "SELECT * FROM students WHERE class_id='$class_id' AND classteacher_id='$classteacher_id'";
+                $get_students = "SELECT * FROM students WHERE class_id='$class_id' AND 
+                classteacher_id='$classteacher_id'";
                 $run_students = mysqli_query($con, $get_students);
                 $i = 0;
                 while ($row_students = mysqli_fetch_array($run_students)) {
